@@ -3,14 +3,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "projet-rh": {
+    "beezen-rh": {
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
       "architect": {}
     }
   },
-  "defaultProject": "projet-rh",
+  "defaultProject": "beezen-rh",
   "cli": {
     "packageManager": "yarn"
   },
@@ -20,7 +20,7 @@
       "inlineTemplate": false,
       "spec": false,
       "prefix": "jhi",
-      "styleExt": "css"
+      "styleExt": "scss"
     },
     "@schematics/angular:directive": {
       "spec": false,

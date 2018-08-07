@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { ProjetRhSharedModule } from 'app/shared';
+import { BeezenRhSharedModule } from 'app/shared';
 
 import {
     SessionsComponent,
@@ -13,10 +13,10 @@ import {
     PasswordResetFinishComponent,
     SettingsComponent,
     accountState
-} from 'app/account';
+} from './';
 
 @NgModule({
-    imports: [ProjetRhSharedModule, RouterModule.forChild(accountState)],
+    imports: [BeezenRhSharedModule, RouterModule.forChild(accountState)],
     declarations: [
         ActivateComponent,
         RegisterComponent,
@@ -29,4 +29,4 @@ import {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class ProjetRhAccountModule {}
+export class BeezenRhAccountModule {}

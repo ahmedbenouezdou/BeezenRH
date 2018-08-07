@@ -6,47 +6,32 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { JhiEventManager } from 'ng-jhipster';
 
-import { AuthExpiredInterceptor } from 'app/blocks/interceptor/auth-expired.interceptor';
-import { ErrorHandlerInterceptor } from 'app/blocks/interceptor/errorhandler.interceptor';
-import { NotificationInterceptor } from 'app/blocks/interceptor/notification.interceptor';
-import { ProjetRhSharedModule } from 'app/shared';
-import { ProjetRhCoreModule } from 'app/core';
-import { ProjetRhAppRoutingModule } from 'app/app-routing.module';
-import { ProjetRhHomeModule } from 'app/home/home.module';
-import { ProjetRhAccountModule } from 'app/account/account.module';
-import { ProjetRhEntityModule } from 'app/entities/entity.module';
+import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
+import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
+import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
+import { BeezenRhSharedModule } from 'app/shared';
+import { BeezenRhCoreModule } from 'app/core';
+import { BeezenRhAppRoutingModule } from './app-routing.module';
+import { BeezenRhHomeModule } from './home/home.module';
+import { BeezenRhAccountModule } from './account/account.module';
+import { BeezenRhEntityModule } from './entities/entity.module';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from 'app/layouts';
-import { DashboardComponent } from 'app/dashboard/dashboard.component';
-import { NavigationComponent } from 'app/dashboard/navigation/navigation.component';
-import { LoginComponent } from 'app/login/login.component';
-import { TopnavbarComponent } from 'app/dashboard/topnavbar/topnavbar.component';
+import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
 @NgModule({
     imports: [
         BrowserModule,
-        ProjetRhAppRoutingModule,
+        BeezenRhAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
-        ProjetRhSharedModule,
-        ProjetRhCoreModule,
-        ProjetRhHomeModule,
-        ProjetRhAccountModule,
-        ProjetRhEntityModule
+        BeezenRhSharedModule,
+        BeezenRhCoreModule,
+        BeezenRhHomeModule,
+        BeezenRhAccountModule,
+        BeezenRhEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
-    declarations: [
-        JhiMainComponent,
-        LoginComponent,
-        DashboardComponent,
-        NavigationComponent,
-        TopnavbarComponent,
-        NavbarComponent,
-        ErrorComponent,
-        PageRibbonComponent,
-        ActiveMenuDirective,
-        FooterComponent
-    ],
+    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
@@ -69,4 +54,4 @@ import { TopnavbarComponent } from 'app/dashboard/topnavbar/topnavbar.component'
     ],
     bootstrap: [JhiMainComponent]
 })
-export class ProjetRhAppModule {}
+export class BeezenRhAppModule {}

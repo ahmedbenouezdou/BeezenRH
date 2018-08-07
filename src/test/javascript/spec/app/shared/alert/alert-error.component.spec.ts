@@ -3,7 +3,7 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { JhiAlertService, JhiEventManager } from 'ng-jhipster';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { ProjetRhTestModule } from '../../../test.module';
+import { BeezenRhTestModule } from '../../../test.module';
 import { JhiAlertErrorComponent } from 'app/shared/alert/alert-error.component';
 import { MockAlertService } from '../../../helpers/mock-alert.service';
 
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
         beforeEach(
             async(() => {
                 TestBed.configureTestingModule({
-                    imports: [ProjetRhTestModule, TranslateModule.forRoot()],
+                    imports: [BeezenRhTestModule, TranslateModule.forRoot()],
                     declarations: [JhiAlertErrorComponent],
                     providers: [
                         JhiEventManager,
@@ -40,22 +40,22 @@ describe('Component Tests', () => {
         describe('Error Handling', () => {
             it('Should display an alert on status 0', () => {
                 // GIVEN
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: { status: 0 } });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: { status: 0 } });
                 // THEN
                 expect(comp.alerts.length).toBe(1);
                 expect(comp.alerts[0].msg).toBe('error.server.not.reachable');
             });
             it('Should display an alert on status 404', () => {
                 // GIVEN
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: { status: 404 } });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: { status: 404 } });
                 // THEN
                 expect(comp.alerts.length).toBe(1);
                 expect(comp.alerts[0].msg).toBe('error.url.not.found');
             });
             it('Should display an alert on generic error', () => {
                 // GIVEN
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: { error: { message: 'Error Message' } } });
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: { error: 'Second Error Message' } });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: { error: { message: 'Error Message' } } });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: { error: 'Second Error Message' } });
                 // THEN
                 expect(comp.alerts.length).toBe(2);
                 expect(comp.alerts[0].msg).toBe('Error Message');
@@ -76,7 +76,7 @@ describe('Component Tests', () => {
                         message: 'error.validation'
                     }
                 });
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: response });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: response });
                 // THEN
                 expect(comp.alerts.length).toBe(1);
                 expect(comp.alerts[0].msg).toBe('error.validation');
@@ -89,7 +89,7 @@ describe('Component Tests', () => {
                     status: 400,
                     error: 'Bad Request'
                 });
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: response });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: response });
                 // THEN
                 expect(comp.alerts.length).toBe(1);
                 expect(comp.alerts[0].msg).toBe('Bad Request');
@@ -110,7 +110,7 @@ describe('Component Tests', () => {
                         fieldErrors: [{ objectName: 'foo', field: 'minField', message: 'Min' }]
                     }
                 });
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: response });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: response });
                 // THEN
                 expect(comp.alerts.length).toBe(1);
                 expect(comp.alerts[0].msg).toBe('error.Size');
@@ -127,7 +127,7 @@ describe('Component Tests', () => {
                         message: 'error.validation'
                     }
                 });
-                eventManager.broadcast({ name: 'projetRhApp.httpError', content: response });
+                eventManager.broadcast({ name: 'beezenRhApp.httpError', content: response });
                 // THEN
                 expect(comp.alerts.length).toBe(1);
                 expect(comp.alerts[0].msg).toBe('Error Message');

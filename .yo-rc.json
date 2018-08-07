@@ -1,14 +1,14 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.beezen.projetrh",
+      "packageName": "com.beezen.beezenrh",
       "nativeLanguage": "fr"
     },
     "jhipsterVersion": "5.1.0",
     "applicationType": "monolith",
-    "baseName": "projetRH",
-    "packageName": "com.beezen.projetrh",
-    "packageFolder": "com/beezen/projetrh",
+    "baseName": "BeezenRH",
+    "packageName": "com.beezen.beezenrh",
+    "packageFolder": "com/beezen/beezenrh",
     "serverPort": "8080",
     "authenticationType": "session",
     "cacheProvider": "ehcache",
@@ -22,9 +22,9 @@
     "serviceDiscoveryType": false,
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "rememberMeKey": "cc751419949deeb57a6813a171cfb9011a204d8a",
+    "rememberMeKey": "5d6e242103e981906c8475f776353711e2f2be18",
     "clientFramework": "angularX",
-    "useSass": false,
+    "useSass": true,
     "clientPackageManager": "yarn",
     "testFrameworks": [
       "protractor"

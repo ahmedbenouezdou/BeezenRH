@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { ErrorComponent } from 'app/layouts/error/error.component';
+import { ErrorComponent } from './error.component';
 
 export const errorRoute: Routes = [
     {

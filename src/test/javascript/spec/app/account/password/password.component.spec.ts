@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { HttpResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 
-import { ProjetRhTestModule } from '../../../test.module';
+import { BeezenRhTestModule } from '../../../test.module';
 import { PasswordComponent } from 'app/account/password/password.component';
 import { PasswordService } from 'app/account/password/password.service';
 
@@ -15,7 +15,7 @@ describe('Component Tests', () => {
         beforeEach(
             async(() => {
                 TestBed.configureTestingModule({
-                    imports: [ProjetRhTestModule],
+                    imports: [BeezenRhTestModule],
                     declarations: [PasswordComponent],
                     providers: []
                 })

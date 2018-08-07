@@ -22,7 +22,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
         /* tslint:enable */
         this.alerts = [];
 
-        this.cleanHttpErrorListener = eventManager.subscribe('projetRhApp.httpError', response => {
+        this.cleanHttpErrorListener = eventManager.subscribe('beezenRhApp.httpError', response => {
             let i;
             const httpErrorResponse = response.content;
             switch (httpErrorResponse.status) {
@@ -54,7 +54,7 @@ export class JhiAlertErrorComponent implements OnDestroy {
                             }
                             // convert 'something[14].other[4].id' to 'something[].other[].id' so translations can be written to it
                             const convertedField = fieldError.field.replace(/\[\d*\]/g, '[]');
-                            const fieldName = translateService.instant('projetRhApp.' + fieldError.objectName + '.' + convertedField);
+                            const fieldName = translateService.instant('beezenRhApp.' + fieldError.objectName + '.' + convertedField);
                             this.addErrorAlert('Error on field "' + fieldName + '"', 'error.' + fieldError.message, { fieldName });
                         }
                     } else if (httpErrorResponse.error !== '' && httpErrorResponse.error.message) {

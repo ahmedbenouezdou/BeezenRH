@@ -17,7 +17,7 @@ import locale from '@angular/common/locales/fr';
         DatePipe
     ]
 })
-export class ProjetRhCoreModule {
+export class BeezenRhCoreModule {
     constructor() {
         registerLocaleData(locale);
     }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
-import { ProjetRhTestModule } from '../../../test.module';
+import { BeezenRhTestModule } from '../../../test.module';
 import { UserMgmtDetailComponent } from 'app/admin/user-management/user-management-detail.component';
 import { User } from 'app/core';
 
@@ -17,7 +17,7 @@ describe('Component Tests', () => {
         beforeEach(
             async(() => {
                 TestBed.configureTestingModule({
-                    imports: [ProjetRhTestModule],
+                    imports: [BeezenRhTestModule],
                     declarations: [UserMgmtDetailComponent],
                     providers: [
                         {

@@ -1,3 +1,3 @@
-export * from 'app/home/home.component';
-export * from 'app/home/home.route';
-export * from 'app/home/home.module';
+export * from './home.component';
+export * from './home.route';
+export * from './home.module';

@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core';
-import { SessionsComponent } from 'app/account/sessions/sessions.component';
+import { SessionsComponent } from './sessions.component';
 
 export const sessionsRoute: Route = {
     path: 'sessions',

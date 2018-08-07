@@ -5,12 +5,12 @@ import { JhiLanguageService } from 'ng-jhipster';
 
 import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from 'app/core';
-import { ProfileService } from 'app/layouts/profiles/profile.service';
+import { ProfileService } from '../profiles/profile.service';
 
 @Component({
     selector: 'jhi-navbar',
     templateUrl: './navbar.component.html',
-    styleUrls: ['navbar.css']
+    styleUrls: ['navbar.scss']
 })
 export class NavbarComponent implements OnInit {
     inProduction: boolean;
