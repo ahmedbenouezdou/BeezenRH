@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ProjetRhSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from './';
+import { ProjetRhSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from 'app/shared';
 
 @NgModule({
     imports: [ProjetRhSharedLibsModule],

@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ProjetRhSharedModule } from 'app/shared';
-import { HOME_ROUTE, HomeComponent } from './';
+import { HOME_ROUTE, HomeComponent } from 'app/home';
 
 @NgModule({
     imports: [ProjetRhSharedModule, RouterModule.forChild([HOME_ROUTE])],

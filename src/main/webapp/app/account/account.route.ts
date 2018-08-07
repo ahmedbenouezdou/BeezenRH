@@ -8,7 +8,7 @@ import {
     registerRoute,
     sessionsRoute,
     settingsRoute
-} from './';
+} from 'app/account';
 
 const ACCOUNT_ROUTES = [
     activateRoute,
