@@ -18,6 +18,10 @@ import { BeezenRhEntityModule } from './entities/entity.module';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
+import { NavigationComponent } from 'app/dashboard/navigation/navigation.component';
+import { TopnavbarComponent } from 'app/dashboard/topnavbar/topnavbar.component';
+import { DashboardComponent } from 'app/dashboard/dashboard.component';
+import { LoginComponent } from 'app/login/login.component';
 
 @NgModule({
     imports: [
@@ -31,7 +35,18 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         BeezenRhEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
-    declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+    declarations: [
+        JhiMainComponent,
+        NavigationComponent,
+        TopnavbarComponent,
+        LoginComponent,
+        DashboardComponent,
+        NavbarComponent,
+        ErrorComponent,
+        PageRibbonComponent,
+        ActiveMenuDirective,
+        FooterComponent
+    ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
