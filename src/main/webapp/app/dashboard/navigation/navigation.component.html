@@ -21,10 +21,12 @@
                         style="width: 30px; height: 23px; " alt="Logo">
                 </div>
             </li>
-            <li [ngClass]="{active: activeRoute('home')}">
-                <a [routerLink]="['./home']"><i class="fa fa-dashboard"></i> <span class="nav-label">Dashboards</span></a>
+            <li [ngClass]="{active: activeRoute('hom')}">
+                <a [routerLink]="['./hom']"><i class="fa fa-dashboard"></i> <span class="nav-label">Home</span></a>
             </li>
-          
+            <li [ngClass]="{active: activeRoute('others')}">
+                    <a [routerLink]="['./others']"><i class="fa fa-dashboard"></i> <span class="nav-label">Others</span></a>
+                </li>
         </ul>
 
     </div>

@@ -22,6 +22,10 @@ import { NavigationComponent } from 'app/dashboard/navigation/navigation.compone
 import { TopnavbarComponent } from 'app/dashboard/topnavbar/topnavbar.component';
 import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import { LoginComponent } from 'app/login/login.component';
+import { RegisterComponent } from 'app/register/register.component';
+import { HomeComponent } from 'app/home';
+import { OthersComponent } from 'app/dashboard/others/others.component';
+import { HomComponent } from 'app/dashboard/home/home.component';
 
 @NgModule({
     imports: [
@@ -36,10 +40,13 @@ import { LoginComponent } from 'app/login/login.component';
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
+        HomComponent,
+        OthersComponent,
         JhiMainComponent,
         NavigationComponent,
         TopnavbarComponent,
         LoginComponent,
+        RegisterComponent,
         DashboardComponent,
         NavbarComponent,
         ErrorComponent,
