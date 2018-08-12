@@ -5,7 +5,7 @@ import { OnInit, Component } from '@angular/core';
 import { Login } from 'app/entities/login';
 
 @Component({
-    selector: 'home',
+    selector: 'jhi-home',
     templateUrl: './home.component.html'
 })
 export class HomComponent implements OnInit {

@@ -17,9 +17,6 @@ import { BeezenRhAccountModule } from './account/account.module';
 import { BeezenRhEntityModule } from './entities/entity.module';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
-import { NavigationComponent } from 'app/dashboard/navigation/navigation.component';
-import { TopnavbarComponent } from 'app/dashboard/topnavbar/topnavbar.component';
-import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import { LoginComponent } from 'app/login/login.component';
 import { RegisterComponent } from 'app/register/register.component';
 import { HomeComponent } from 'app/home';
@@ -30,7 +27,7 @@ import { BeezenRhDashboardModule } from 'app/dashboard/dashboard.module';
         BrowserModule,
         HttpClientModule,
         BeezenRhAppRoutingModule,
-        Ng2Webstorage.forRoot({ prefix: 'brh', separator: '-' }),
+        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
         BeezenRhSharedModule,
         BeezenRhCoreModule,
         BeezenRhHomeModule,
@@ -40,11 +37,8 @@ import { BeezenRhDashboardModule } from 'app/dashboard/dashboard.module';
     ],
     declarations: [
         JhiMainComponent,
-        NavigationComponent,
-        TopnavbarComponent,
         LoginComponent,
         RegisterComponent,
-        DashboardComponent,
         NavbarComponent,
         ErrorComponent,
         PageRibbonComponent,

@@ -5,8 +5,8 @@ import { OnInit, Component } from '@angular/core';
 import { Login } from 'app/entities/login';
 
 @Component({
-    selector: 'brh-leave',
-    templateUrl: './home.component.html'
+    selector: 'jhi-leave',
+    templateUrl: './leave.component.html'
 })
 export class LeaveComponent implements OnInit {
     loginInfo: Login = {

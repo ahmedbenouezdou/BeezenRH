@@ -3,11 +3,10 @@ import { RouterModule } from '@angular/router';
 
 import { BeezenRhSharedModule } from 'app/shared';
 
-import { CraComponent, dashboardState, DashboardComponent, HomComponent } from './';
+import { CraComponent, dashboardState, DashboardComponent, HomComponent, NavigationComponent, TopnavbarComponent } from './';
 
 @NgModule({
     imports: [BeezenRhSharedModule, RouterModule.forChild(dashboardState)],
-    declarations: [CraComponent, DashboardComponent, HomComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    declarations: [CraComponent, DashboardComponent, HomComponent, NavigationComponent, TopnavbarComponent]
 })
 export class BeezenRhDashboardModule {}

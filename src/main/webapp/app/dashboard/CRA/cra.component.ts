@@ -8,7 +8,7 @@ import { Events, Action, StructureCss } from './event';
 const n = new Date();
 
 @Component({
-    selector: 'brh-cra',
+    selector: 'jhi-cra',
     templateUrl: './cra.component.html',
     styleUrls: ['./cra.component.css']
 })

@@ -7,7 +7,6 @@ const DASHBOARD_ROUTES = [homeRoute, craRoute, leaveRoute];
 export const dashboardState: Routes = [
     {
         path: 'dashboard',
-        component: DashboardComponent,
         children: DASHBOARD_ROUTES
     }
 ];

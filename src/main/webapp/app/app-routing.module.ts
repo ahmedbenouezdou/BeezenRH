@@ -12,12 +12,8 @@ import { RegisterComponent } from 'app/register/register.component';
     imports: [
         RouterModule.forRoot(
             [
-                /*...LAYOUT_ROUTES,
-                {
-                    path: 'admin',
-                    loadChildren: './admin/admin.module#BeezenRhAdminModule'
-                }*/
-                { path: '', component: LoginComponent }
+                //// ...LAYOUT_ROUTES,
+                { path: ' ', component: LoginComponent }
             ],
             { useHash: true, enableTracing: DEBUG_INFO_ENABLED }
         )

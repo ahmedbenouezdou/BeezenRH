@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { smoothlyMenu } from '../../app.helpers';
 declare var jQuery: any;
 @Component({
-    selector: 'topnavbar',
+    selector: 'jhi-topnavbar',
     templateUrl: 'topnavbar.component.html'
 })
 export class TopnavbarComponent implements OnInit {
