@@ -24,8 +24,16 @@
             <li [ngClass]="{active: activeRoute('hom')}">
                 <a [routerLink]="['./hom']"><i class="fa fa-dashboard"></i> <span class="nav-label">Home</span></a>
             </li>
+            <li [ngClass]="{active: activeRoute('cra')}">
+                    <a [routerLink]="['./CRA']"><i class="fa fa-dashboard"></i> <span class="nav-label">CRA</span></a>
+            </li>
+
+            <li [ngClass]="{active: activeRoute('leave')}">
+                    <a [routerLink]="['./leave']"><i class="fa fa-dashboard"></i> <span class="nav-label">leave</span></a>
+                </li>
+
             <li [ngClass]="{active: activeRoute('others')}">
-                    <a [routerLink]="['./others']"><i class="fa fa-dashboard"></i> <span class="nav-label">Others</span></a>
+                    <a [routerLink]="['./leave']"><i class="fa fa-dashboard"></i> <span class="nav-label">Others</span></a>
                 </li>
         </ul>
 

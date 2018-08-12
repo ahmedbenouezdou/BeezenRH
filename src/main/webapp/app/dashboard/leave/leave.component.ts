@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * Created by andrew.yang on 5/18/2017.
+ */
+import { OnInit, Component } from '@angular/core';
 import { Login } from 'app/entities/login';
 
 @Component({
-    selector: 'app-others',
-    templateUrl: './others.component.html'
+    selector: 'brh-leave',
+    templateUrl: './home.component.html'
 })
-export class OthersComponent implements OnInit {
+export class LeaveComponent implements OnInit {
     loginInfo: Login = {
         first_name: 'Andrew',
         last_name: 'Yang',

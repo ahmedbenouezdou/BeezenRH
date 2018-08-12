@@ -2,7 +2,7 @@ import './vendor.ts';
 
 import { NgModule, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { JhiEventManager } from 'ng-jhipster';
 
@@ -16,7 +16,6 @@ import { BeezenRhHomeModule } from './home/home.module';
 import { BeezenRhAccountModule } from './account/account.module';
 import { BeezenRhEntityModule } from './entities/entity.module';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
-// jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 import { NavigationComponent } from 'app/dashboard/navigation/navigation.component';
 import { TopnavbarComponent } from 'app/dashboard/topnavbar/topnavbar.component';
@@ -24,24 +23,22 @@ import { DashboardComponent } from 'app/dashboard/dashboard.component';
 import { LoginComponent } from 'app/login/login.component';
 import { RegisterComponent } from 'app/register/register.component';
 import { HomeComponent } from 'app/home';
-import { OthersComponent } from 'app/dashboard/others/others.component';
-import { HomComponent } from 'app/dashboard/home/home.component';
+import { BeezenRhDashboardModule } from 'app/dashboard/dashboard.module';
 
 @NgModule({
     imports: [
         BrowserModule,
+        HttpClientModule,
         BeezenRhAppRoutingModule,
-        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
+        Ng2Webstorage.forRoot({ prefix: 'brh', separator: '-' }),
         BeezenRhSharedModule,
         BeezenRhCoreModule,
         BeezenRhHomeModule,
         BeezenRhAccountModule,
-        BeezenRhEntityModule
-        // jhipster-needle-angular-add-module JHipster will add new module here
+        BeezenRhEntityModule,
+        BeezenRhDashboardModule
     ],
     declarations: [
-        HomComponent,
-        OthersComponent,
         JhiMainComponent,
         NavigationComponent,
         TopnavbarComponent,

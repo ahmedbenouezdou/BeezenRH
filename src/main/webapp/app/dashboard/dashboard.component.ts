@@ -5,7 +5,7 @@ import { OnInit, Component } from '@angular/core';
 import { Login } from 'app/entities/login';
 
 @Component({
-    selector: 'dashboard',
+    selector: 'brh-dashboard',
     templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
