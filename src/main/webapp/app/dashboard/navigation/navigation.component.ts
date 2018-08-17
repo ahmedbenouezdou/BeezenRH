@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Login } from 'app/entities/login';
 
 @Component({
-    selector: 'jhi-navigation',
+    selector: 'navigation',
     templateUrl: './navigation.component.html'
 })
 export class NavigationComponent implements OnInit {

@@ -1,16 +1,16 @@
 <div id="wrapper">
-    <jhi-navigation [loginInfo]="loginInfo" *ngIf="loginInfo"></jhi-navigation>
-
-    <div id="page-wrapper" class="gray-bg">
-
-        <jhi-topnavbar></jhi-topnavbar>
-
-        <router-outlet></router-outlet>
-
-        <div class="footer">
+        <navigation [loginInfo]="loginInfo" *ngIf="loginInfo"></navigation> 
+      
+        <div id="page-wrapper" class="gray-bg">
+      
+          <jhi-topnavbar></jhi-topnavbar>
+      
+          <router-outlet></router-outlet> 
+      
+          <div class="footer">
             <div>
-
+            
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>

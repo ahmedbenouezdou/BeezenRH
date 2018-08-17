@@ -5,9 +5,9 @@ import { LeaveComponent } from './leave.component';
 
 export const leaveRoute: Route = {
     path: 'leave',
-    component: LeaveComponent,
-    data: {
+    component: LeaveComponent
+    /*    data: {
         authorities: []
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService] */
 };

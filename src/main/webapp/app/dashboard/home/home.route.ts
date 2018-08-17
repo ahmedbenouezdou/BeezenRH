@@ -4,10 +4,11 @@ import { UserRouteAccessService } from 'app/core';
 import { HomComponent } from './home.component';
 
 export const homeRoute: Route = {
-    path: 'home',
-    component: HomComponent,
-    data: {
+    path: 'hom',
+    component: HomComponent
+
+    /*  data: {
         authorities: []
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService] */
 };

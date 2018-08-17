@@ -5,9 +5,10 @@ import { CraComponent } from './cra.component';
 
 export const craRoute: Route = {
     path: 'cra',
-    component: CraComponent,
-    data: {
+    component: CraComponent
+
+    /*   data: {
         authorities: []
     },
-    canActivate: [UserRouteAccessService]
+    canActivate: [UserRouteAccessService] */
 };

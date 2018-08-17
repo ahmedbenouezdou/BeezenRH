@@ -1,41 +1,46 @@
- <nav class="navbar-default navbar-static-side" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav metismenu" id="side-menu">
-            <li class="nav-header">
-                <div class="dropdown profile-element">
-                    <span>
-                        <img alt="image" class="img-circle" width="80px"
-                             src="../../../content/assets/img/avatar/ay.jpeg" />
-                    </span>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                      <span class="clear">
-                          <span class="block m-t-xs">
-                          <strong class="font-bold">{{loginInfo.first_name}} {{loginInfo.last_name}}</strong>
-                      </span>
-                          <span class="text-muted text-xs block">{{loginInfo.title}}</span>
-                      </span>
-                    </a>
-                </div>
-                <div class="logo-element">
-                        <img  src="http://beezen.fr/wp-content/uploads/2016/01/logo-light@2x.png"
-                        style="width: 30px; height: 23px; " alt="Logo">
-                </div>
-            </li>
-            <li [ngClass]="{active: activeRoute('hom')}">
-                <a [routerLink]="['./hom']"><i class="fa fa-dashboard"></i> <span class="nav-label">Home</span></a>
-            </li>
-            <li [ngClass]="{active: activeRoute('cra')}">
-                    <a [routerLink]="['./CRA']"><i class="fa fa-dashboard"></i> <span class="nav-label">CRA</span></a>
-            </li>
-
-            <li [ngClass]="{active: activeRoute('leave')}">
-                    <a [routerLink]="['./leave']"><i class="fa fa-dashboard"></i> <span class="nav-label">leave</span></a>
+<nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <span>
+                            <img alt="image" class="img-circle" width="80px"
+                                 src="../../../content/assets/img/avatar/ay.jpeg" />
+                        </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                          <span class="clear">
+                              <span class="block m-t-xs">
+                              <strong class="font-bold">{{loginInfo.first_name}} {{loginInfo.last_name}}</strong>
+                          </span>
+                              <span class="text-muted text-xs block">{{loginInfo.title}}</span>
+                          </span>
+                        </a>
+                    </div>
+                    <div class="logo-element">
+                            <img  src="http://beezen.fr/wp-content/uploads/2016/01/logo-light@2x.png"
+                            style="width: 30px; height: 23px; " alt="Logo">
+                    </div>
                 </li>
-
-            <li [ngClass]="{active: activeRoute('others')}">
-                    <a [routerLink]="['./leave']"><i class="fa fa-dashboard"></i> <span class="nav-label">Others</span></a>
+                <li [ngClass]="{active: activeRoute('hom')}">
+                    <a [routerLink]="['./hom']"><i class="fa fa fa-home"></i> <span class="nav-label">Home</span></a>
                 </li>
-        </ul>
-
-    </div>
-</nav> 
+                <li [ngClass]="{active: activeRoute('cra')}">
+                        <a [routerLink]="['./cra']"><i class="fa fa-calendar"></i> <span class="nav-label">CRA</span></a>
+                </li>
+    
+                <li [ngClass]="{active: activeRoute('others')}">
+                        <a [routerLink]="['./others']"><i class="fa fa-dashboard"></i> <span class="nav-label">others</span></a>
+                    </li>
+    
+                <li [ngClass]="{active: activeRoute('leave')}">
+                        <a [routerLink]="['./leave']"><i class="fa fa-external-link"></i> <span class="nav-label">Leave</span></a>
+                    </li>
+                
+                <li [ngClass]="{active: activeRoute('activity')}">
+                            <a [routerLink]="['./activity']"><i class="fa fa-line-chart"></i> <span class="nav-label">Activity</span></a>
+                        </li>
+            </ul>
+    
+        </div>
+    </nav> 
+   

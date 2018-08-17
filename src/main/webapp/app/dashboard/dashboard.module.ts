@@ -2,11 +2,22 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BeezenRhSharedModule } from 'app/shared';
-
-import { CraComponent, dashboardState, DashboardComponent, HomComponent, NavigationComponent, TopnavbarComponent } from './';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CraComponent /* , dashboardState */, DashboardComponent, HomComponent, NavigationComponent, TopnavbarComponent } from './';
+import { NavbarComponent } from 'app/layouts';
+import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
-    imports: [BeezenRhSharedModule, RouterModule.forChild(dashboardState)],
-    declarations: [CraComponent, DashboardComponent, HomComponent, NavigationComponent, TopnavbarComponent]
+    schemas: [NO_ERRORS_SCHEMA],
+    imports: [BeezenRhSharedModule, RouterModule /* RouterModule.forChild(dashboardState) */],
+    declarations: [
+        CraComponent,
+        DashboardComponent,
+        HomComponent,
+        NavbarComponent,
+        NavigationComponent,
+        TopnavbarComponent,
+        ActivityComponent
+    ]
 })
 export class BeezenRhDashboardModule {}

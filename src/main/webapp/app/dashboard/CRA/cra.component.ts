@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import * as moment from 'moment';
-import { Events, Action, StructureCss } from './event';
-
-const n = new Date();
+import { Events, Action } from './event';
 
 @Component({
     selector: 'jhi-cra',
