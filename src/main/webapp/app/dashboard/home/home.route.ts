@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core';
-import { HomComponent } from './home.component';
+import { HomComponent } from 'app/dashboard/home/home.component';
 
 export const homeRoute: Route = {
     path: 'hom',

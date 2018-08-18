@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="activity">
+            <h2><span jhiTranslate="beezenRhApp.activity.detail.title">Activity</span> {{activity.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="beezenRhApp.activity.activityLabel">Activity Label</span></dt>
+                <dd>
+                    <span>{{activity.activityLabel}}</span>
+                </dd>
+                <dt><span jhiTranslate="beezenRhApp.activity.dateDebut">Date Debut</span></dt>
+                <dd>
+                    <span>{{activity.dateDebut}}</span>
+                </dd>
+                <dt><span jhiTranslate="beezenRhApp.activity.dateFin">Date Fin</span></dt>
+                <dd>
+                    <span>{{activity.dateFin}}</span>
+                </dd>
+                <dt><span jhiTranslate="beezenRhApp.activity.isValide">Is Valide</span></dt>
+                <dd>
+                    <span>{{activity.isValide}}</span>
+                </dd>
+                <dt><span jhiTranslate="beezenRhApp.activity.activityType">Activity Type</span></dt>
+                <dd>
+                    <span>{{activity.activityType}}</span>
+                </dd>
+                <dt><span jhiTranslate="beezenRhApp.activity.user">User</span></dt>
+                <dd>
+                    {{activity.user?.login}}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/activity', activity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

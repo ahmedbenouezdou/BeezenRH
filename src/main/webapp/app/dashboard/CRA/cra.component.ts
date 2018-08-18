@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Events, Action } from './event';
+import { Events, Action } from 'app/dashboard/CRA/event';
 
 @Component({
     selector: 'jhi-cra',

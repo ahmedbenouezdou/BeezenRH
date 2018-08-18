@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 
 import { UserRouteAccessService } from 'app/core';
-import { CraComponent } from './cra.component';
+import { CraComponent } from 'app/dashboard/CRA/cra.component';
 
 export const craRoute: Route = {
     path: 'cra',

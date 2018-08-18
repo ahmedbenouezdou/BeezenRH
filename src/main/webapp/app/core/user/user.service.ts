@@ -4,13 +4,17 @@ import { Observable, of } from 'rxjs';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
-import { IUser } from './user.model';
+import { IUser } from 'app/core/user/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     private resourceUrl = SERVER_API_URL + 'api/users';
 
     constructor(private http: HttpClient) {}
+
+    findAdmin(login: string): Observable<HttpResponse<IUser>> {
+        return this.http.get<IUser>(`${this.resourceUrl}/admin`, { observe: 'response' });
+    }
 
     create(user: IUser): Observable<HttpResponse<IUser>> {
         return this.http.post<IUser>(this.resourceUrl, user, { observe: 'response' });

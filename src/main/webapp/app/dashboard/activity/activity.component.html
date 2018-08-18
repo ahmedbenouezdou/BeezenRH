@@ -1,10 +1,54 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2>Activity</h2>
-    </div>
-    <div class="col-lg-2">
-    </div>
-</div>
-<p>
-  activity works!
-</p>
+        <div class="col-lg-10">
+            <h2>Activity</h2>
+        </div>
+        <div class="col-lg-2">
+        </div>
+      </div>
+      <div class="wrapper wrapper-content">
+        
+      
+      
+          <div class="col-lg-6">
+              <div class="ibox float-e-margins">
+                  <div class="ibox-title">
+      
+                    <div>  <button type="button" class="btn btn-primary btn-w-m" (onClick)="createNew()"><i class="fa fa-plus"></i>  Add New</button>
+                    </div>
+                      <div class="ibox-tools">
+                         <a class="collapse-link">
+                              <i class="fa fa-chevron-up"></i>
+                          </a>
+                          <a class="close-link">
+                              <i class="fa fa-times"></i>
+                          </a>
+                      </div>
+                  </div>
+                 
+                  <div class="ibox-content">
+                      <table class="table table-hover no-margins">
+                           <thead>
+                          <tr>
+                              <th>id</th>
+                              <th>title</th>
+                              <th>Date Debut</th>
+                              <th>Date Fin</th>
+                              <th>Is Valide</th>
+                              <th>Type</th>
+                          </tr>
+                          </thead> 
+                          <tbody>
+                              <tr *ngFor="let item of myactivities">
+                                  <td><span class="label label-primary">{{item.id}}</span></td>
+                                  <td>{{item.activityLabel}}</td>
+                                  <td><i class="fa fa-clock-o"></i>{{item.dateDebut | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                  <td><i class="fa fa-clock-o"></i>{{item.dateFin | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                  <td class="text-navy">{{item.isValide}}</td>
+                                  <td>{{item.activitytype}}</td> 
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>

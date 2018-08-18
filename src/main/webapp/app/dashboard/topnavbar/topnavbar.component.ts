@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { smoothlyMenu } from '../../app.helpers';
+import { smoothlyMenu } from 'app/app.helpers';
 import { LoginService } from 'app/core/login/login.service';
 import { Router } from '@angular/router';
 declare var jQuery: any;

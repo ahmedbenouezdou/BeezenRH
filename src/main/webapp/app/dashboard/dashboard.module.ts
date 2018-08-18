@@ -3,9 +3,15 @@ import { RouterModule } from '@angular/router';
 
 import { BeezenRhSharedModule } from 'app/shared';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CraComponent /* , dashboardState */, DashboardComponent, HomComponent, NavigationComponent, TopnavbarComponent } from './';
+import {
+    CraComponent /* , dashboardState */,
+    DashboardComponent,
+    HomComponent,
+    NavigationComponent,
+    TopnavbarComponent
+} from 'app/dashboard';
 import { NavbarComponent } from 'app/layouts';
-import { ActivityComponent } from './activity/activity.component';
+import { ActivityComponent } from 'app/dashboard/activity/activity.component';
 
 @NgModule({
     schemas: [NO_ERRORS_SCHEMA],

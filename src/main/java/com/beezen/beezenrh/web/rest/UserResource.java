@@ -5,6 +5,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.beezen.beezenrh.domain.User;
 import com.beezen.beezenrh.repository.UserRepository;
 import com.beezen.beezenrh.security.AuthoritiesConstants;
+import com.beezen.beezenrh.security.SecurityUtils;
 import com.beezen.beezenrh.service.MailService;
 import com.beezen.beezenrh.service.UserService;
 import com.beezen.beezenrh.service.dto.UserDTO;
@@ -57,6 +58,8 @@ import java.util.*;
 @RestController
 @RequestMapping("/api")
 public class UserResource {
+
+    /* private final SecurityUtils securityUtils; */
 
     private final Logger log = LoggerFactory.getLogger(UserResource.class);
 
@@ -187,4 +190,5 @@ public class UserResource {
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
     }
+
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { BeezenRhSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from './';
+import { BeezenRhSharedLibsModule, FindLanguageFromKeyPipe, JhiAlertComponent, JhiAlertErrorComponent } from 'app/shared';
 
 @NgModule({
     imports: [BeezenRhSharedLibsModule],

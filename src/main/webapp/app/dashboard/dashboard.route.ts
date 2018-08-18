@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { homeRoute, craRoute, leaveRoute, DashboardComponent, HomComponent, LeaveComponent, CraComponent } from './';
+import { homeRoute, craRoute, leaveRoute, DashboardComponent, HomComponent, LeaveComponent, CraComponent } from 'app/dashboard';
 import { OthersComponent } from 'app/dashboard/others/others.component';
 import { ActivityComponent } from 'app/dashboard/activity/activity.component';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';

@@ -40,6 +40,7 @@ public class CacheConfiguration {
             cm.createCache(com.beezen.beezenrh.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(com.beezen.beezenrh.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(com.beezen.beezenrh.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(com.beezen.beezenrh.domain.Activity.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
