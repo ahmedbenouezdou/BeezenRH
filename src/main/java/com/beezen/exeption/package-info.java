@@ -5,4 +5,4 @@
  * @author khadija
  *
  */
-package com.beezen.controller;
+package com.beezen.exeption;
