@@ -14,22 +14,22 @@ public class Utilisateurs_Roles implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Long utilisateurId;
+	private Long utilisateurid;
 	@Id
-	private Long roleId;
+	private Long roleid;
 	
 
 	public Long getUtilisateurId() {
-		return utilisateurId;
+		return utilisateurid;
 	}
 	public void setUtilisateurId(Long utilisateurId) {
-		this.utilisateurId = utilisateurId;
+		this.utilisateurid = utilisateurId;
 	}
 	public Long getRoleId() {
-		return roleId;
+		return roleid;
 	}
 	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
+		this.roleid = roleId;
 	}
 
 

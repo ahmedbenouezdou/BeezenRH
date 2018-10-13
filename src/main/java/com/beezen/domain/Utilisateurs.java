@@ -19,6 +19,7 @@ public class Utilisateurs {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String login;
 	private String email;
 	private String mdp;
 	private String numtel;
@@ -28,7 +29,7 @@ public class Utilisateurs {
 	private String prenom;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "utilisateurs_roles", joinColumns = @JoinColumn(name = "compteur"), inverseJoinColumns = @JoinColumn(name = "roleid"), schema = "config")
+	@JoinTable(name = "utilisateurs_roles", joinColumns = @JoinColumn(name = "utilisateurid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
 	private List<Roles> roles;
 
 	public Long getId() {
@@ -38,7 +39,13 @@ public class Utilisateurs {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
 	public String getEmail() {
 		return email;
 	}

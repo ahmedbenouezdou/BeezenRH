@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/mobile")
 public class AppController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)

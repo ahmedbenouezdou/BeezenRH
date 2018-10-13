@@ -33,25 +33,31 @@ import com.beezen.service.IUtilisateursService;
 			return utilisateursService.IsUtilisateurs(email);
 		}
 
-		@PreAuthorize("hasAnyAuthority('Admin')")
+	//	@PreAuthorize("hasAnyAuthority('Admin')")
 		@GetMapping(value = "/getId")
 		public Long getUtilisateurId(String login) {
 			return utilisateursService.getUtilisateurId(login);
 		}
 
-		@PreAuthorize("hasAnyAuthority('Admin')")
+	//	@PreAuthorize("hasAnyAuthority('Admin')")
 		@GetMapping(value = "/getAll")
 		public List<Utilisateurs> getAllUtilisateurs() {
 			return utilisateursService.getAllUtilisateurs();
 		}
+		
+		@GetMapping(value = "/getUtilisateurParId")
+		public Utilisateurs getUtilisateursParId(@RequestParam(name = "id") Long id) {
 
-		@PreAuthorize("hasAnyAuthority('Admin')")
+			return utilisateursService.getUtilisateurParId(id);
+		}
+		
+	//	@PreAuthorize("hasAnyAuthority('Admin')")
 		@GetMapping(value = "/getUtilisateurs")
 		public List<Utilisateurs> getUtilisateursWithoutAdmin() {
 			return utilisateursService.getUtilisateursWithoutAdmin();
 		}
 
-		@PreAuthorize("hasAnyAuthority('Admin')")
+	//	@PreAuthorize("hasAnyAuthority('Admin')")
 		@RequestMapping(value = "/getUtilisateurParEmail")
 		public Utilisateurs getUtilisateursParEmail(@RequestParam(name = "email") String email) {
 
@@ -71,7 +77,7 @@ import com.beezen.service.IUtilisateursService;
 
 		}
 
-		@PreAuthorize("hasAnyAuthority('Admin')")
+	//	@PreAuthorize("hasAnyAuthority('Admin')")
 		@PostMapping
 		public Utilisateurs saveUtilisateur(@RequestBody Utilisateurs u) {
 
@@ -86,7 +92,7 @@ import com.beezen.service.IUtilisateursService;
 			return utilisateursService.saveUtilisateur(u);
 		}
 
-		@PreAuthorize("hasAnyAuthority('Admin')")
+	//	@PreAuthorize("hasAnyAuthority('Admin')")
 		@DeleteMapping
 		public void deleteUtilisateur(Long id) throws CustomException {
 			if (utilisateursService.getUtilisateurParEmail(SecurityContextHolder.getContext().getAuthentication().getName())

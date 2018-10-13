@@ -63,7 +63,9 @@ public class UtilisateursService implements IUtilisateursService {
 
 	@Override
 	public Utilisateurs getUtilisateurParEmail(String email) {
-		return getUtilisateurParEmail(email);
+		Utilisateurs user = repo.findByEmail(email);
+		
+		return  user;
 	}
 
 

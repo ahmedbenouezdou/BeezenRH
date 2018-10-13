@@ -1,4 +1,4 @@
-package com.beezen.beezenrh;
+package com.beezen;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.beezen.beezenrh;
+package com.beezen;
 
 import java.io.IOException;
 import java.sql.Date;

@@ -1,4 +1,4 @@
-package com.beezen.beezenrh;
+package com.beezen;
 
 public class SecurityConstants {
 	
