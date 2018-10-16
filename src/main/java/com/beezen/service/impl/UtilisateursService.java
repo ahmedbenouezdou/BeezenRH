@@ -25,6 +25,12 @@ public class UtilisateursService implements IUtilisateursService {
 	}
 	
 	@Override
+	public Utilisateurs getUtilisateurParLogin(String login) {
+
+		return repo.findByLogin(login);
+	}
+	
+	@Override
 	public List<Utilisateurs> getAllUtilisateurs() {
 		return (List<Utilisateurs>) repo.findAllByOrderByEmail();
 	}
@@ -44,14 +50,16 @@ public class UtilisateursService implements IUtilisateursService {
 		repo.deleteById(id);
 	}
 
-	@Override
-	public List<Utilisateurs> getUtilisateursWithoutAdmin() {
-		return repo.getUtilisateursWithoutAdmin();
-	}
+//	@Override
+//	public List<Utilisateurs> getUtilisateursWithoutAdmin() {
+//		return repo.getUtilisateursWithoutAdmin();
+//	}
 
+	
+	
 	@Override
-	public Long getUtilisateurId(String email) {
-		return getUtilisateurParEmail(email).getId();
+	public Long getUtilisateurId(String login) {
+		return getUtilisateurParLogin(login).getId();
 	}
 
 	@Override
@@ -64,7 +72,6 @@ public class UtilisateursService implements IUtilisateursService {
 	@Override
 	public Utilisateurs getUtilisateurParEmail(String email) {
 		Utilisateurs user = repo.findByEmail(email);
-		
 		return  user;
 	}
 

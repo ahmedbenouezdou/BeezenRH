@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,7 +15,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-//import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import com.beezen.domain.Utilisateurs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,15 +23,14 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFilter {
 
-	@Autowired
-	private AuthenticationManager authentificationManager;
+	private AuthenticationManager authenticationManager;
 
 	private final CustomUserDetailsService customUserDetailsService;
 
 	public JWTAuthentificationFilter(AuthenticationManager authenticationManager,
 			CustomUserDetailsService customUserDetailsService) {
 
-		this.authentificationManager = authenticationManager;
+		this.authenticationManager = authenticationManager;
 		this.customUserDetailsService = customUserDetailsService;
 	}
 
@@ -44,8 +41,8 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
 		try {
 			Utilisateurs user = new ObjectMapper().readValue(request.getInputStream(), Utilisateurs.class);
 
-			return this.authentificationManager
-					.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getMdp()));
+			return this.authenticationManager
+					.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getMdp()));
 
 		} catch (IOException e) {
 
@@ -64,16 +61,14 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
 				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 				.signWith(SignatureAlgorithm.HS256, SecurityConstants.SECRET).compact();
 
-	
 		response.getWriter().write(SecurityConstants.TOKEN_PREFIX + token);
 		response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 
 		Utilisateurs utl = customUserDetailsService.loadUtilisateurByUsername(user.getUsername());
-		response.addHeader("username", utl.getNom());
+		response.addHeader("username", utl.getLogin());
 		response.addHeader("email", utl.getEmail());
 		response.addHeader("role", utl.getRoles().toString());
 
 	}
-
 
 }

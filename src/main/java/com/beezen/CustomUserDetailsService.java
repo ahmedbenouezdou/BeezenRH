@@ -15,6 +15,7 @@ import com.beezen.domain.Utilisateurs;
 import com.beezen.service.IUtilisateursService;
 
 
+
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 	
@@ -31,11 +32,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 		userAuths = userAuths.replaceAll(" ", "");
 		List<GrantedAuthority> grantedAuths = AuthorityUtils.commaSeparatedStringToAuthorityList(userAuths);
 
-		return new User(user.getEmail(), user.getMdp(), grantedAuths);
+		return new User(user.getLogin(), user.getMdp(), grantedAuths);
 	}
 
 	public Utilisateurs loadUtilisateurByUsername(String username) {
 
-		return utilisateursService.getUtilisateurParEmail(username);
+		return utilisateursService.getUtilisateurParLogin(username);
 	}
 }

@@ -20,87 +20,98 @@ import com.beezen.domain.Utilisateurs;
 import com.beezen.exeption.CustomException;
 import com.beezen.service.IUtilisateursService;
 
-    @CrossOrigin
-	@RestController
-	@RequestMapping("/api/utilisateurs")
-	public class UtilisateursController {
+@CrossOrigin
+@RestController
+@RequestMapping("/api/utilisateurs")
+public class UtilisateursController {
 
-		@Autowired
-		private IUtilisateursService utilisateursService;
+	@Autowired
+	private IUtilisateursService utilisateursService;
 
-		@GetMapping
-		public Boolean getUtilisateurByEmail(String email) {
-			return utilisateursService.IsUtilisateurs(email);
-		}
+	@PreAuthorize("hasAnyAuthority('Admin')")
+	@GetMapping(value = "/getok")
+	public String getOk() {
+		return "okokokokokokokokokok";
+	}
+	
+	@GetMapping
+	public Boolean getUtilisateurByEmail(String email) {
+		return utilisateursService.IsUtilisateurs(email);
+	}
 
-	//	@PreAuthorize("hasAnyAuthority('Admin')")
-		@GetMapping(value = "/getId")
-		public Long getUtilisateurId(String login) {
-			return utilisateursService.getUtilisateurId(login);
-		}
+	// @PreAuthorize("hasAnyAuthority('Admin')")
+	@GetMapping(value = "/getId")
+	public Long getUtilisateurId(String login) {
+		return utilisateursService.getUtilisateurId(login);
+	}
 
-	//	@PreAuthorize("hasAnyAuthority('Admin')")
-		@GetMapping(value = "/getAll")
-		public List<Utilisateurs> getAllUtilisateurs() {
-			return utilisateursService.getAllUtilisateurs();
-		}
-		
-		@GetMapping(value = "/getUtilisateurParId")
-		public Utilisateurs getUtilisateursParId(@RequestParam(name = "id") Long id) {
+   // @PreAuthorize("hasAnyAuthority('Admin')")
+	@GetMapping(value = "/getAll")
+	public List<Utilisateurs> getAllUtilisateurs() {
+		return utilisateursService.getAllUtilisateurs();
+	}
 
-			return utilisateursService.getUtilisateurParId(id);
-		}
-		
-	//	@PreAuthorize("hasAnyAuthority('Admin')")
-		@GetMapping(value = "/getUtilisateurs")
-		public List<Utilisateurs> getUtilisateursWithoutAdmin() {
-			return utilisateursService.getUtilisateursWithoutAdmin();
-		}
+	@GetMapping(value = "/getUtilisateurParId")
+	public Utilisateurs getUtilisateursParId(@RequestParam(name = "id") Long id) {
 
-	//	@PreAuthorize("hasAnyAuthority('Admin')")
-		@RequestMapping(value = "/getUtilisateurParEmail")
-		public Utilisateurs getUtilisateursParEmail(@RequestParam(name = "email") String email) {
+		return utilisateursService.getUtilisateurParId(id);
+	}
 
-			return utilisateursService.getUtilisateurParEmail(email);
-		}
+	// @PreAuthorize("hasAnyAuthority('Admin')")
+	// @GetMapping(value = "/getUtilisateurs")
+	// public List<Utilisateurs> getUtilisateursWithoutAdmin() {
+	// return utilisateursService.getUtilisateursWithoutAdmin();
+	// }
 
-		@RequestMapping(method = RequestMethod.POST, value = "/authentificate")
-		public Map<String, Boolean> authenticate(@RequestBody Utilisateurs user) {
+	// @PreAuthorize("hasAnyAuthority('Admin')")
+	@RequestMapping(value = "/getUtilisateurParEmail")
+	public Utilisateurs getUtilisateursParEmail(@RequestParam(name = "email") String email) {
 
-			Utilisateurs utilisateur = utilisateursService.getUtilisateurParEmail(user.getEmail());
+		return utilisateursService.getUtilisateurParEmail(email);
+	}
+	
+	@RequestMapping(value = "/getUtilisateurParLogin")
+	public Utilisateurs getUtilisateursParLogin(@RequestParam(name = "login") String login) {
 
-			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		return utilisateursService.getUtilisateurParLogin(login);
+	}
 
-			if (utilisateur != null && encoder.matches(user.getMdp(), utilisateur.getMdp()))
-				return Collections.singletonMap("success", true);
-			return Collections.singletonMap("success", false);
+	@RequestMapping(method = RequestMethod.POST, value = "/authentificate")
+	public Map<String, Boolean> authenticate(@RequestBody Utilisateurs user) {
 
-		}
+		Utilisateurs utilisateur = utilisateursService.getUtilisateurParLogin(user.getLogin());
 
-	//	@PreAuthorize("hasAnyAuthority('Admin')")
-		@PostMapping
-		public Utilisateurs saveUtilisateur(@RequestBody Utilisateurs u) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-			Utilisateurs user = utilisateursService.getUtilisateurParId(u.getId());
-
-			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-			if (user == null || !user.getMdp().equals(u.getMdp())) {
-				u.setMdp(encoder.encode(u.getMdp()));
-			}
-
-			return utilisateursService.saveUtilisateur(u);
-		}
-
-	//	@PreAuthorize("hasAnyAuthority('Admin')")
-		@DeleteMapping
-		public void deleteUtilisateur(Long id) throws CustomException {
-			if (utilisateursService.getUtilisateurParEmail(SecurityContextHolder.getContext().getAuthentication().getName())
-					.getId() == id) {
-				throw new CustomException("message.erreur.self.suppression");
-			}
-			utilisateursService.deleteUtilisateur(id);
-		}
-
+		if (utilisateur != null && encoder.matches(user.getMdp(), utilisateur.getMdp()))
+			return Collections.singletonMap("success", true);
+		return Collections.singletonMap("success", false);
 
 	}
+
+	// @PreAuthorize("hasAnyAuthority('Admin')")
+	@PostMapping
+	public Utilisateurs saveUtilisateur(@RequestBody Utilisateurs u) {
+
+		Utilisateurs user = utilisateursService.getUtilisateurParId(u.getId());
+
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		if (user == null || !user.getMdp().equals(u.getMdp())) {
+			u.setMdp(encoder.encode(u.getMdp()));
+		}
+
+		return utilisateursService.saveUtilisateur(u);
+	}
+
+	// @PreAuthorize("hasAnyAuthority('Admin')")
+	@DeleteMapping
+	public void deleteUtilisateur(Long id) throws CustomException {
+		if (utilisateursService.getUtilisateurParEmail(SecurityContextHolder.getContext().getAuthentication().getName())
+				.getId() == id) {
+			throw new CustomException("message.erreur.self.suppression");
+		}
+		utilisateursService.deleteUtilisateur(id);
+	}
+
+}
