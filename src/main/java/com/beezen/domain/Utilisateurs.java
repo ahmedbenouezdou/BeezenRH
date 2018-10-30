@@ -3,6 +3,7 @@ package com.beezen.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,22 +12,102 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+//import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "utilisateurs", schema = "config")
+@Table(name = "utilisateurs")
 public class Utilisateurs {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String login;
+	@Column(unique=true)
+	private String username;
+	@Column(unique=true)
 	private String email;
-	private String mdp;
+	private String password;
 	private String numtel;
 	private Integer codereset;
 	private Date datereset;
-	private String nom;
-	private String prenom;
+	private String company;
+	private String lastName;
+	private String firstName;
+	private String about;
+	private String post;
+	private String icon;
+	private String facebookLink;
+	private String likendinLink;
+	private String googleplusLink;
+	
+	public String getFacebookLink() {
+		return facebookLink;
+	}
+
+	public void setFacebookLink(String facebookLink) {
+		this.facebookLink = facebookLink;
+	}
+
+	public String getLikendinLink() {
+		return likendinLink;
+	}
+
+	public void setLikendinLink(String likendinLink) {
+		this.likendinLink = likendinLink;
+	}
+
+	public String getGoogleplusLink() {
+		return googleplusLink;
+	}
+
+	public void setGoogleplusLink(String googleplusLink) {
+		this.googleplusLink = googleplusLink;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getAbout() {
+		return about;
+	}
+
+	public void setAbout(String about) {
+		this.about = about;
+	}
+
+	public String getPost() {
+		return post;
+	}
+
+	public void setPost(String post) {
+		this.post = post;
+	}
+
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "utilisateurs_roles", joinColumns = @JoinColumn(name = "utilisateurid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
@@ -39,13 +120,15 @@ public class Utilisateurs {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getLogin() {
-		return login;
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -53,7 +136,7 @@ public class Utilisateurs {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public Integer getCodereset() {
 		return codereset;
 	}
@@ -70,12 +153,12 @@ public class Utilisateurs {
 		this.roles = roles;
 	}
 
-	public String getMdp() {
-		return mdp;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Integer getCodeReset() {
@@ -102,22 +185,20 @@ public class Utilisateurs {
 		this.numtel = numtel;
 	}
 
-	public String getNom() {
-		return nom;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getPrenom() {
-		return prenom;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-
 
 }
-

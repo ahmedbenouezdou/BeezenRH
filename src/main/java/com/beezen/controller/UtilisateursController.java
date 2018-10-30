@@ -22,30 +22,31 @@ import com.beezen.service.IUtilisateursService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/utilisateurs")
+@RequestMapping("/utilisateurs")
 public class UtilisateursController {
 
 	@Autowired
 	private IUtilisateursService utilisateursService;
 
-	@PreAuthorize("hasAnyAuthority('Admin')")
-	@GetMapping(value = "/getok")
-	public String getOk() {
-		return "okokokokokokokokokok";
-	}
-	
+
+
 	@GetMapping
 	public Boolean getUtilisateurByEmail(String email) {
 		return utilisateursService.IsUtilisateurs(email);
 	}
 
-	// @PreAuthorize("hasAnyAuthority('Admin')")
-	@GetMapping(value = "/getId")
-	public Long getUtilisateurId(String login) {
-		return utilisateursService.getUtilisateurId(login);
+	@GetMapping(value = "/login")
+	public String login() {
+		return "login";
 	}
 
-   // @PreAuthorize("hasAnyAuthority('Admin')")
+	// @PreAuthorize("hasAnyAuthority('Admin')")
+//	@GetMapping(value = "/getId")
+//	public Long getUtilisateurId(String login) {
+//		return utilisateursService.getUtilisateurId(login);
+//	}
+
+	// @PreAuthorize("hasAnyAuthority('Admin')")
 	@GetMapping(value = "/getAll")
 	public List<Utilisateurs> getAllUtilisateurs() {
 		return utilisateursService.getAllUtilisateurs();
@@ -57,39 +58,32 @@ public class UtilisateursController {
 		return utilisateursService.getUtilisateurParId(id);
 	}
 
-	// @PreAuthorize("hasAnyAuthority('Admin')")
-	// @GetMapping(value = "/getUtilisateurs")
-	// public List<Utilisateurs> getUtilisateursWithoutAdmin() {
-	// return utilisateursService.getUtilisateursWithoutAdmin();
-	// }
-
-	// @PreAuthorize("hasAnyAuthority('Admin')")
+    @PreAuthorize("hasAnyAuthority('Admin')")
 	@RequestMapping(value = "/getUtilisateurParEmail")
 	public Utilisateurs getUtilisateursParEmail(@RequestParam(name = "email") String email) {
 
 		return utilisateursService.getUtilisateurParEmail(email);
 	}
-	
-	@RequestMapping(value = "/getUtilisateurParLogin")
-	public Utilisateurs getUtilisateursParLogin(@RequestParam(name = "login") String login) {
 
-		return utilisateursService.getUtilisateurParLogin(login);
+	@RequestMapping(value = "/getUtilisateurParUsername")
+	public Utilisateurs getUtilisateursParLogin(@RequestParam(name = "username") String username) {
+
+		return utilisateursService.getUtilisateurParUsername(username);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/authentificate")
 	public Map<String, Boolean> authenticate(@RequestBody Utilisateurs user) {
 
-		Utilisateurs utilisateur = utilisateursService.getUtilisateurParLogin(user.getLogin());
+		Utilisateurs utilisateur = utilisateursService.getUtilisateurParUsername(user.getUsername());
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		if (utilisateur != null && encoder.matches(user.getMdp(), utilisateur.getMdp()))
+		if (utilisateur != null && encoder.matches(user.getPassword(), utilisateur.getPassword()))
 			return Collections.singletonMap("success", true);
 		return Collections.singletonMap("success", false);
 
 	}
 
-	// @PreAuthorize("hasAnyAuthority('Admin')")
 	@PostMapping
 	public Utilisateurs saveUtilisateur(@RequestBody Utilisateurs u) {
 
@@ -97,14 +91,13 @@ public class UtilisateursController {
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-		if (user == null || !user.getMdp().equals(u.getMdp())) {
-			u.setMdp(encoder.encode(u.getMdp()));
+		if (user == null || !user.getPassword().equals(u.getPassword())) {
+			u.setPassword(encoder.encode(u.getPassword()));
 		}
 
 		return utilisateursService.saveUtilisateur(u);
 	}
 
-	// @PreAuthorize("hasAnyAuthority('Admin')")
 	@DeleteMapping
 	public void deleteUtilisateur(Long id) throws CustomException {
 		if (utilisateursService.getUtilisateurParEmail(SecurityContextHolder.getContext().getAuthentication().getName())

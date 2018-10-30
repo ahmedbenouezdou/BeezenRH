@@ -13,8 +13,7 @@ public interface IUtilisateursService {
 
 	public List<Utilisateurs> getAllUtilisateurs();
 
-	//public List<Utilisateurs> getUtilisateursWithoutAdmin();
-	public Utilisateurs getUtilisateurParLogin(String login);
+	public Utilisateurs getUtilisateurParUsername(String username);
 
 	public Utilisateurs saveUtilisateur(Utilisateurs u);
 

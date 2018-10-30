@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.beezen.domain.Utilisateurs;
+import com.beezen.repository.AddressRepo;
 import com.beezen.repository.UtilisateursRepo;
 import com.beezen.service.IUtilisateursService;
 
@@ -14,6 +15,9 @@ public class UtilisateursService implements IUtilisateursService {
 	@Autowired
 	private UtilisateursRepo repo;
 
+	@Autowired
+	private AddressRepo repoAddress;
+	
 	@Override
 	public boolean IsUtilisateurs(String email) {
 		Utilisateurs user = repo.findByEmail(email);
@@ -25,9 +29,9 @@ public class UtilisateursService implements IUtilisateursService {
 	}
 	
 	@Override
-	public Utilisateurs getUtilisateurParLogin(String login) {
+	public Utilisateurs getUtilisateurParUsername(String username) {
 
-		return repo.findByLogin(login);
+		return repo.findByUsername(username);
 	}
 	
 	@Override
@@ -42,6 +46,7 @@ public class UtilisateursService implements IUtilisateursService {
 				u.setEmail(null);
 			}
 		}
+		repoAddress.save(u.getAddress());
 		return repo.save(u);
 	}
 
@@ -58,15 +63,15 @@ public class UtilisateursService implements IUtilisateursService {
 	
 	
 	@Override
-	public Long getUtilisateurId(String login) {
-		return getUtilisateurParLogin(login).getId();
+	public Long getUtilisateurId(String username) {
+		return getUtilisateurParUsername(username).getId();
 	}
 
 	@Override
 	public Utilisateurs getUtilisateurParId(Long id) {
 		Optional<Utilisateurs> optional = repo.findById(id);
 		Utilisateurs user = optional.get();
-		return  user;
+		return user;
 	}
 
 	@Override

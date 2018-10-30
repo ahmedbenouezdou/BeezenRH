@@ -7,7 +7,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +14,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.beezen.domain.Token;
 import com.beezen.domain.Utilisateurs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -42,7 +42,7 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
 			Utilisateurs user = new ObjectMapper().readValue(request.getInputStream(), Utilisateurs.class);
 
 			return this.authenticationManager
-					.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getMdp()));
+					.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
 		} catch (IOException e) {
 
@@ -61,14 +61,21 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
 				.setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
 				.signWith(SignatureAlgorithm.HS256, SecurityConstants.SECRET).compact();
 
-		response.getWriter().write(SecurityConstants.TOKEN_PREFIX + token);
-		response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+//		response.getWriter().write(SecurityConstants.TOKEN_PREFIX + token);
+//		response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
 
-		Utilisateurs utl = customUserDetailsService.loadUtilisateurByUsername(user.getUsername());
-		response.addHeader("username", utl.getLogin());
-		response.addHeader("email", utl.getEmail());
-		response.addHeader("role", utl.getRoles().toString());
-
+//		Utilisateurs utl = customUserDetailsService.loadUtilisateurByUsername(user.getUsername());
+//		response.addHeader("username", utl.getUsername());
+//		response.addHeader("email", utl.getEmail());
+//		response.addHeader("role", utl.getRoles().toString());
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Utilisateurs utl;
+			utl = customUserDetailsService.loadUtilisateurByUsername(user.getUsername());
+			Token tokenObj= new Token("Authentication success!",SecurityConstants.TOKEN_PREFIX + token,utl.getId(), utl.getFirstName(), utl.getLastName(),utl.getRoles().toString());
+			response.getWriter().print(mapper.writeValueAsString(tokenObj));
+	
+		
 	}
 
 }

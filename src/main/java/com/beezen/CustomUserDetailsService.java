@@ -32,11 +32,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 		userAuths = userAuths.replaceAll(" ", "");
 		List<GrantedAuthority> grantedAuths = AuthorityUtils.commaSeparatedStringToAuthorityList(userAuths);
 
-		return new User(user.getLogin(), user.getMdp(), grantedAuths);
+		return new User(user.getUsername(), user.getPassword(), grantedAuths);
 	}
 
 	public Utilisateurs loadUtilisateurByUsername(String username) {
 
-		return utilisateursService.getUtilisateurParLogin(username);
+		return utilisateursService.getUtilisateurParUsername(username);
 	}
 }
