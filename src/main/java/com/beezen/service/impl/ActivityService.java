@@ -1,5 +1,6 @@
 package com.beezen.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,12 @@ public class ActivityService implements IActivityService {
 	@Override
 	public void delete(Long id) {
 		repo.deleteById(id);
+	}
+
+	@Override
+	public List<Activity> findAllByValid(boolean valid) {
+	
+		return repo.findByIsValid(valid);
 	}
 
 }

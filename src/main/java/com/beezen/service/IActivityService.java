@@ -12,5 +12,7 @@ public interface IActivityService {
 	public void delete(Long id);
 
 	public Iterable<Activity> findAll();
+	
+	public Iterable<Activity> findAllByValid(boolean valid);
 
 }

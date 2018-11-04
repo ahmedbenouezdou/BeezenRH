@@ -29,48 +29,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		requestConfiguration.addAllowedHeader(CorsConfiguration.ALL);
 		requestConfiguration.addExposedHeader("username");
 		requestConfiguration.addExposedHeader("email");
-	//	requestConfiguration.addExposedHeader("role");
+		// requestConfiguration.addExposedHeader("role");
 
-//		 http.csrf().disable();
-//
-//	        http.cors().and()
-//	                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//	                
-//	                .and()
-//	                .authorizeRequests()
-//	                .antMatchers(HttpMethod.OPTIONS).permitAll();
-	                
-		JWTAuthentificationFilter authFilter = new JWTAuthentificationFilter(super.authenticationManager(), customUserDetailsService);
+		// http.csrf().disable();
+		//
+		// http.cors().and()
+		// .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		//
+		// .and()
+		// .authorizeRequests()
+		// .antMatchers(HttpMethod.OPTIONS).permitAll();
+
+		JWTAuthentificationFilter authFilter = new JWTAuthentificationFilter(super.authenticationManager(),
+				customUserDetailsService);
 		authFilter.setFilterProcessesUrl("/login");
-		
-	
 
 		http.cors().configurationSource(request -> requestConfiguration).and().csrf().disable().authorizeRequests()
-				.and().formLogin().loginPage("/login").permitAll().and()
-				.addFilter(authFilter)
+				.and().formLogin().loginPage("/login").permitAll().and().addFilter(authFilter)
 				.addFilter(new JWTAuthorizationFilter(super.authenticationManager(), customUserDetailsService))
 				.headers().frameOptions().disable();
 
-		
-		
-//		http.cors().and().cors().configurationSource(request -> requestConfiguration)
-//		.and().csrf().disable().authorizeRequests()
-//		.antMatchers(HttpMethod.OPTIONS).permitAll()
-//       // .antMatchers("/login").permitAll()
-//        .anyRequest().authenticated()
-//        .and().formLogin().loginPage("/api/login").permitAll()
-//        .and().addFilter(authFilter)
-//        .addFilter(new JWTAuthorizationFilter(super.authenticationManager(), customUserDetailsService))
-//        .headers().frameOptions().disable()
-//        // this disables session creation on Spring Security
-//        .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//        .and().formLogin().disable();
-//		
+		// http.cors().and().cors().configurationSource(request -> requestConfiguration)
+		// .and().csrf().disable().authorizeRequests()
+		// .antMatchers(HttpMethod.OPTIONS).permitAll()
+		// // .antMatchers("/login").permitAll()
+		// .anyRequest().authenticated()
+		// .and().formLogin().loginPage("/api/login").permitAll()
+		// .and().addFilter(authFilter)
+		// .addFilter(new JWTAuthorizationFilter(super.authenticationManager(),
+		// customUserDetailsService))
+		// .headers().frameOptions().disable()
+		// // this disables session creation on Spring Security
+		// .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		// .and().formLogin().disable();
+		//
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //pour un mot de passe crypté Md5Encoder() or BCryptPasswordEncoder()
+		// pour un mot de passe crypté Md5Encoder() or BCryptPasswordEncoder()
 		auth.userDetailsService(customUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 }

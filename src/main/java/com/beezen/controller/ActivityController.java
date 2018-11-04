@@ -61,11 +61,20 @@ public class ActivityController {
 
 	@RequestMapping(value = "/getbyid/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Activity getActivityParId(@PathVariable("id") Long id) throws NotFoundException, NonAuthorizedException {
-
-		System.out.println("Probleme de coherence avec IDSITE");
 		Activity act = activityService.findOne(id);
 		return act;
 
 	}
 
+	@RequestMapping(value = "/getallvalid/{valid}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Activity> getAllvalid(@PathVariable("valid") boolean valid)
+			throws NotFoundExeption{
+		try {
+			List<Activity> acts = (List<Activity>) activityService.findAllByValid(valid);
+			return acts;	
+		}catch (Exception e) {
+		throw new NotFoundExeption();
+		}
+	}
+	
 }
