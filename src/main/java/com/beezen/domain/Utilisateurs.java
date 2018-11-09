@@ -16,20 +16,19 @@ import javax.persistence.OneToOne;
 //import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "utilisateurs")
 public class Utilisateurs {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique=true)
+	@Column(unique = true)
 	private String username;
-	@Column(unique=true)
+	@Column(unique = true)
 	private String email;
 	private String password;
 	private String numtel;
-	private Integer codereset;
+	private String codereset;
 	private Date datereset;
 	private String company;
 	private String lastName;
@@ -40,7 +39,15 @@ public class Utilisateurs {
 	private String facebookLink;
 	private String likendinLink;
 	private String googleplusLink;
-	
+
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "utilisateurs_roles", joinColumns = @JoinColumn(name = "utilisateurid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
+	private List<Roles> roles;
+
 	public String getFacebookLink() {
 		return facebookLink;
 	}
@@ -105,14 +112,6 @@ public class Utilisateurs {
 		this.post = post;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "address_id")
-	private Address address;
-
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "utilisateurs_roles", joinColumns = @JoinColumn(name = "utilisateurid"), inverseJoinColumns = @JoinColumn(name = "roleid"))
-	private List<Roles> roles;
-
 	public Long getId() {
 		return id;
 	}
@@ -137,11 +136,11 @@ public class Utilisateurs {
 		this.email = email;
 	}
 
-	public Integer getCodereset() {
+	public String getCodereset() {
 		return codereset;
 	}
 
-	public void setCodereset(Integer codereset) {
+	public void setCodereset(String codereset) {
 		this.codereset = codereset;
 	}
 
@@ -159,14 +158,6 @@ public class Utilisateurs {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Integer getCodeReset() {
-		return codereset;
-	}
-
-	public void setReset(Integer codereset) {
-		this.codereset = codereset;
 	}
 
 	public Date getDatereset() {

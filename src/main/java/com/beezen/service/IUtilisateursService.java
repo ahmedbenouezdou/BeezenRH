@@ -22,5 +22,7 @@ public interface IUtilisateursService {
 	public Utilisateurs getUtilisateurParId(Long id);
 
 	public Long getUtilisateurId(String email);
+	
+	public Utilisateurs getUtilisateurParCode(String code);
 
 }

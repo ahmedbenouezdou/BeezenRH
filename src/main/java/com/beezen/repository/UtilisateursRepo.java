@@ -7,8 +7,10 @@ import com.beezen.domain.Utilisateurs;
 
 
 public interface UtilisateursRepo extends CrudRepository<Utilisateurs, Long> {
+	
+	public Utilisateurs  findBycodereset(String code);
 
-	Utilisateurs findByEmail(String email);
+	public Utilisateurs findByEmail(String email);
 	
 	public List<Utilisateurs> findAllByOrderByEmail();
 

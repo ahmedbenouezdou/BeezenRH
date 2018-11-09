@@ -1,9 +1,9 @@
 package com.beezen.service.impl;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.beezen.domain.Utilisateurs;
 import com.beezen.repository.AddressRepo;
 import com.beezen.repository.UtilisateursRepo;
@@ -78,6 +78,11 @@ public class UtilisateursService implements IUtilisateursService {
 	public Utilisateurs getUtilisateurParEmail(String email) {
 		Utilisateurs user = repo.findByEmail(email);
 		return  user;
+	}
+
+	@Override
+	public Utilisateurs getUtilisateurParCode(String code) {
+	 return repo.findBycodereset(code);
 	}
 
 
