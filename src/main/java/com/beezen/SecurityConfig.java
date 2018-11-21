@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
 
 		this.customUserDetailsService = customUserDetailsService;
+		
 	}
 
 	@Override
