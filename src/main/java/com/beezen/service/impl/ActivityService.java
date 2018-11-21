@@ -14,6 +14,7 @@ import com.beezen.service.IActivityService;
 @Service
 public class ActivityService implements IActivityService {
 
+	
 	@Autowired
 	private ActivityRepo repo;
 

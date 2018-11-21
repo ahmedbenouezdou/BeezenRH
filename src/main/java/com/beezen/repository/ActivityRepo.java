@@ -8,4 +8,5 @@ import com.beezen.domain.Activity;
 public interface ActivityRepo extends CrudRepository<Activity, Long> {
 
 	public List<Activity> findByIsValid(boolean isValid);
+	
 }

@@ -26,6 +26,7 @@ import javassist.NotFoundException;
 @RequestMapping("/activity")
 public class ActivityController {
 
+	
 	@Autowired
 	private IActivityService activityService;
 

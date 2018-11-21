@@ -13,4 +13,5 @@ public interface IEmailService {
 	void sendLinkEmail(Utilisateurs u,String url) throws MessagingException, CustomException;
 
 	void sendSimpleMessage(Utilisateurs u)throws MessagingException;
+	
 }
