@@ -9,10 +9,10 @@ import com.beezen.domain.Utilisateurs;
 /**
  * @author Eddú Meléndez
  */
-@Mapper
+/*@Mapper
 public interface LoginMapper {
 
     @Select("select * from city where state = #{state}")
     Utilisateurs findByState(@Param("state") String state);
 
-}
+}*/

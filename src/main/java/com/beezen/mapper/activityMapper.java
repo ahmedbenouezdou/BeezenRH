@@ -8,10 +8,10 @@ import com.beezen.domain.Activity;
 /**
  * @author Eddú Meléndez
  */
-@Mapper
+/*@Mapper
 public interface ActivityMapper {
 
     @Select("select * from city where state = #{state}")
     Activity findByState(@Param("state") String state);
 
-}
+}*/
